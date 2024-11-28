@@ -9,7 +9,7 @@ namespace AdvancedMortgageCalculator.DL
 {
     public class InMemoryDataStore
     {
-        public List<Bank> Banks { get; set; }
+        public IList<Bank> Banks { get; set; }
         private static InMemoryDataStore instance = null;
 
         private InMemoryDataStore()
@@ -19,8 +19,10 @@ namespace AdvancedMortgageCalculator.DL
             // Création des listes pour la première banque
             var productsForBank1 = new List<Product>
         {
-            new Product(1, "Compte Épargne"),
-            new Product(2, "Carte de Crédit")
+            new Product(1, "Mortgage"),
+            new Product(2, "Insurance"),
+            new Product(3, "Savings_Account"),
+            new Product(4, "Checking_Account")
         };
 
             var interestRatesForBank1 = new List<MortgageInterestRates>
@@ -47,8 +49,10 @@ namespace AdvancedMortgageCalculator.DL
             // Création des listes pour la deuxième banque
             var productsForBank2 = new List<Product>
         {
-            new Product(3, "Compte Courant"),
-            new Product(4, "Prêt Personnel")
+            new Product(5, "Mortgage"),
+            new Product(6, "Insurance"),
+            new Product(7, "Loan"),
+            new Product(8, "Checking_Account")
         };
 
             var interestRatesForBank2 = new List<MortgageInterestRates>

@@ -1,10 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using AdvancedMortgageCalculator.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdvancedMortgageCalculator.Utils;
+using MySql.Data.MySqlClient;
 
 namespace AdvancedMortgageCalculator.DAL
 {

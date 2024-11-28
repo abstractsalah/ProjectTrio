@@ -88,7 +88,6 @@ public class Offline_DAO : AbstractDAO
                 bankId,
                 bankNameValue,
                 bankAddress,
-                new List<Product>(),  // Liste vide de produits
                 rates
             );
 

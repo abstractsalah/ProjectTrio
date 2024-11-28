@@ -1,11 +1,4 @@
-﻿using Org.BouncyCastle.Utilities.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+﻿using System.Collections.Generic;
 
 namespace AdvancedMortgageCalculator.BLL.Model
 {
@@ -20,12 +13,28 @@ namespace AdvancedMortgageCalculator.BLL.Model
         public List<Product> Products { get; set; }
         public List<MortgageInterestRates> MortgageInterestRates { get; set; }
         public List<MortgageInsuranceRates> MortgageInsuranceRates { get; set; }
-        public Bank(int id, string name, string address, List<Product> products, List<MortgageInterestRates> mortgageInterestRates)
+
+        public Bank() { }
+
+        public Bank(int id, string name, string address, List<Product> products)
         {
             Id = id;
             Name = name;
             Address = address;
             Products = products;
+        }
+        public Bank(int id, string name, string address, List<MortgageInterestRates> mortgageInterestRates)
+        {
+            Id = id;
+            Name = name;
+            Address = address;
+            MortgageInterestRates = mortgageInterestRates;
+        }
+
+        public Bank(string name, string address, List<MortgageInterestRates> mortgageInterestRates)
+        {
+            Name = name;
+            Address = address;
             MortgageInterestRates = mortgageInterestRates;
         }
 

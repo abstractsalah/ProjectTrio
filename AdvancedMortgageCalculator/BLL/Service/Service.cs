@@ -1,7 +1,7 @@
 ﻿      using AdvancedMortgageCalculator.BLL.Model;
     using AdvancedMortgageCalculator.DAL;
-    using AdvancedMortgageCalculator.Utils;
-    using System;
+using AdvancedMortgageCalculator.Utils;
+using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -12,7 +12,7 @@ namespace AdvancedMortgageCalculator.BLL.Service
 {
     public class BankService
 
-        
+
     {
         IBankDAO bankDAO;
         public BankService(IBankDAO bankDAO)
@@ -20,7 +20,7 @@ namespace AdvancedMortgageCalculator.BLL.Service
             this.bankDAO = bankDAO;
         }
 
-        public Object GetBankInterestRateByName(string bankName)
+        public double GetBankInterestRateByName(string bankName)
         {
             if (string.IsNullOrEmpty(bankName))
             {
@@ -68,7 +68,33 @@ namespace AdvancedMortgageCalculator.BLL.Service
                 throw new NoBankOrRateFound($"Aucun taux d'intérêt valide n'a été trouvé pour la banque '{bankName}'.");
             }
 
-            return tauxTrouvé;
+            return tauxTrouvé.Rate;
         }
+
+        public Bank FetchBankWithLowestInterestRate()
+        {
+            IList<Bank> banks = bankDAO.GetAllBanks();
+
+            // Trouver la banque avec le taux d'intérêt le plus bas
+            var bankWithLowestRate = banks
+                .OrderBy(b => b.MortgageInterestRates.Min(m => m.Rate)) // Trier par le plus bas taux
+                .FirstOrDefault(); // Prendre la première banque avec le taux le plus bas
+
+            return bankWithLowestRate;
+        }
+
+        public IList<Bank> GetBanksByProductType(string productType)
+        {
+            // Récupérer l'instance du DataStore en mémoire
+            IList<Bank> banks = bankDAO.GetAllBanks();
+
+            // Utiliser LINQ pour filtrer les banques qui ont des produits correspondant au type fourni
+            var banksWithProductType = banks
+                .Where(bank => bank.Products.Any(product => product.Type.Equals(productType, StringComparison.OrdinalIgnoreCase)))
+                .ToList();
+
+            return banksWithProductType;
+        }
+
     }
 }
