@@ -30,12 +30,11 @@ namespace AdvancedMortgageCalculator.DL
             new MortgageInterestRates(1, 2.5, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31)),
             new MortgageInterestRates(2, 3.0, new DateTime(2023, 2, 2), new DateTime(2023, 12, 31))
         };
-
             var insuranceRatesForBank1 = new List<MortgageInsuranceRates>
-        {
-            new MortgageInsuranceRates(1, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31)),
-            new MortgageInsuranceRates(2, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31))
-        };
+             {
+            new MortgageInsuranceRates(1, 1.25, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31)),
+            new MortgageInsuranceRates(2, 1.50, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31))
+             };
 
             // Ajout de la Banque Nationale avec ses listes
             Banks.Add(new Bank(
@@ -62,10 +61,10 @@ namespace AdvancedMortgageCalculator.DL
         };
 
             var insuranceRatesForBank2 = new List<MortgageInsuranceRates>
-        {
-            new MortgageInsuranceRates(3, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31)),
-            new MortgageInsuranceRates(4, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31))
-        };
+            {
+    new MortgageInsuranceRates(3, 1.75, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31)),
+    new MortgageInsuranceRates(4, 2.00, new DateTime(2023, 1, 1), new DateTime(2023, 12, 31))
+            };          
 
             // Ajout de la Banque Internationale avec ses listes
             Banks.Add(new Bank(

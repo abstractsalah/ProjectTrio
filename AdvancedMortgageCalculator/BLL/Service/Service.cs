@@ -71,6 +71,32 @@ namespace AdvancedMortgageCalculator.BLL.Service
             return tauxTrouvé.Rate;
         }
 
+        public double FetchBankInsuranceRateByName(string bankName)
+        {
+          
+            // Obtenir toutes les banques
+            var banks = bankDAO.GetAllBanks();
+
+            // Trouver la banque par son nom
+            var banqueTrouvée = (from b in banks
+                                 where b.Name.Equals(bankName, StringComparison.OrdinalIgnoreCase)
+                                 select b).FirstOrDefault();
+            var currentDate = DateTime.Now;
+            Console.WriteLine($"Date actuelle : {currentDate}");
+
+            // Afficher tous les taux disponibles pour le débogage
+            foreach (var rate in banqueTrouvée.MortgageInsuranceRates)
+            {
+                Console.WriteLine($"Taux: {rate.Rate}%, Début: {rate.Effective}, Fin: {rate.Expiry}");
+            }
+
+            // Trouver le taux d'intérêt le plus récent sans vérification de date
+            var tauxTrouvé = (from rate in banqueTrouvée.MortgageInsuranceRates
+                              orderby rate.Effective descending
+                              select rate).FirstOrDefault();
+            return tauxTrouvé.Rate;
+        }
+
         public Bank FetchBankWithLowestInterestRate()
         {
             IList<Bank> banks = bankDAO.GetAllBanks();

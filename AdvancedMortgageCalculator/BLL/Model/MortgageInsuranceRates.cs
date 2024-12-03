@@ -11,6 +11,7 @@ namespace AdvancedMortgageCalculator.BLL.Model
     {
         public static int _AUTO_GEN = 1;
         public int Id { get; set; }
+        public double Rate { get; set; }
         public DateTime Effective { get; set; }
         public DateTime Expiry { get; set; }
 
@@ -20,9 +21,10 @@ namespace AdvancedMortgageCalculator.BLL.Model
             
         }
 
-        public MortgageInsuranceRates(int id, DateTime effective, DateTime expiry)
+        public MortgageInsuranceRates(int id, double rate, DateTime effective, DateTime expiry)
         {
             Id = id;
+            Rate = rate;
             Effective = effective;
             Expiry = expiry;
         }

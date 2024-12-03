@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterestRateService", "Adva
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecurringCostService", "RecurringCostService\RecurringCostService.csproj", "{11937126-DFFD-4195-B252-92DDC85AC93A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortageAmortizationService", "MortageAmortizationService\MortageAmortizationService.csproj", "{A5C48807-FE7F-49FE-815D-6484755F8DCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageAmortizationService", "MortgageAmortizationService\MortgageAmortizationService.csproj", "{CDC7F4C4-2757-46AF-B921-6D893FC6932F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{11937126-DFFD-4195-B252-92DDC85AC93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11937126-DFFD-4195-B252-92DDC85AC93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11937126-DFFD-4195-B252-92DDC85AC93A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A5C48807-FE7F-49FE-815D-6484755F8DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5C48807-FE7F-49FE-815D-6484755F8DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5C48807-FE7F-49FE-815D-6484755F8DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5C48807-FE7F-49FE-815D-6484755F8DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

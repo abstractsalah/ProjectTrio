@@ -12,9 +12,9 @@ namespace AdvancedMortgageCalculator.DAL
 
         public Online_DAO() : base() { }
 
-        public IList<Bank> FetchBankInterestRateByName(string bankName)
+        public Bank FetchBankInterestRateByName(string bankName)
         {
-            IList<Bank> allBanks = new List<Bank>();
+            Bank bank = null;
 
             this.Connection.Open();
             MySqlCommand command = new MySqlCommand("FetchBankInterestRateByName", this.Connection);
@@ -28,7 +28,11 @@ namespace AdvancedMortgageCalculator.DAL
                 string bankNameResult = cursor.GetString("bank_name");
                 string bankAddress = cursor.GetString("bank_address");
 
-                Bank bank = new Bank(bankId, bankNameResult, bankAddress, new List<MortgageInterestRates>());
+                if (bank == null)
+                {
+                    bank = new Bank(bankId, bankNameResult, bankAddress, new List<MortgageInterestRates>());
+                }
+
                 if (!cursor.IsDBNull(cursor.GetOrdinal("rate_id")))
                 {
                     int rateId = cursor.GetInt32("rate_id");
@@ -38,24 +42,24 @@ namespace AdvancedMortgageCalculator.DAL
                     MortgageInterestRates mortgageRate = new MortgageInterestRates(rateId, rate, effectiveDate, expiryDate);
                     bank.MortgageInterestRates.Add(mortgageRate);
                 }
-                allBanks.Add(bank);
             }
+
             cursor.Close();
             this.Connection.Close();
 
-            return allBanks;
+            return bank;
         }
+
 
         public Bank GetBankWithLowestInterestRate()
         {
             Bank found = null;
 
             this.Connection.Open();
-
-            // the command is going to call the stored procedure instead of using the long string sql query^^
+             //stored procedure incoming ...
             MySqlCommand command = new MySqlCommand("FetchBankWithLowestInterestRate", this.Connection);
             command.CommandType = CommandType.StoredProcedure;
-            using (MySqlDataReader cursor = command.ExecuteReader())
+            MySqlDataReader cursor = command.ExecuteReader();
             {
                 if (cursor.Read())
                 {
@@ -80,6 +84,7 @@ namespace AdvancedMortgageCalculator.DAL
                     };
                 }
             }
+            cursor.Close();
             this.Connection.Close();
 
             return found;
@@ -93,7 +98,7 @@ namespace AdvancedMortgageCalculator.DAL
             MySqlCommand command = new MySqlCommand("FetchBanksByProductType", this.Connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ProductType", productType);
-            using (MySqlDataReader cursor = command.ExecuteReader())
+            MySqlDataReader cursor = command.ExecuteReader();
             {
                 while (cursor.Read())
                 {
@@ -104,10 +109,38 @@ namespace AdvancedMortgageCalculator.DAL
                     banks.Add(new Bank(bankId, bankName, bankAddress, new List<Product>()));
                 }
             }
+            cursor.Close();
             this.Connection.Close();
 
             return banks;
         }
+
+        public IList<MortgageInsuranceRates> FetchMortgageInsuranceRateByBank(string bankName)
+        {
+            IList<MortgageInsuranceRates> insuranceRates = new List<MortgageInsuranceRates>();
+
+            this.Connection.Open();
+            MySqlCommand command = new MySqlCommand("GetInsuranceRatesByBank", this.Connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@BankName", bankName);
+            MySqlDataReader cursor = command.ExecuteReader();
+            {
+                while (cursor.Read())
+                {
+                    int rateId = cursor.GetInt32("rate_id");
+                    double rate = cursor.GetDouble("rate");
+                    DateTime effectiveDate = cursor.GetDateTime("effective_date");
+                    DateTime expiryDate = cursor.GetDateTime("expiry_date");
+                    MortgageInsuranceRates insuranceRate = new MortgageInsuranceRates(rateId, rate, effectiveDate, expiryDate);
+                    insuranceRates.Add(insuranceRate);
+                }
+            }
+            cursor.Close();
+            this.Connection.Close();
+
+            return insuranceRates;
+        }
+
     }
 
 }

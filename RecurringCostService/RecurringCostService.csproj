@@ -43,18 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BLL\Model\loanDetails.cs" />
+    <Compile Include="BLL\Service\LoanCalculatorService.cs" />
+    <Compile Include="FEL\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BLL\Model\" />
-    <Folder Include="BLL\Service\" />
     <Folder Include="DAL\" />
     <Folder Include="DL\" />
-    <Folder Include="FEL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvancedMortgageCalculator\InterestRateService.csproj">
+      <Project>{4eeaf85b-e467-4a1e-996d-a60b72f3dc2e}</Project>
+      <Name>InterestRateService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
