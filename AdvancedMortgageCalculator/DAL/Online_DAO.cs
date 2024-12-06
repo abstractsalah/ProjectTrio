@@ -6,7 +6,7 @@ using System.Data;
 
 namespace AdvancedMortgageCalculator.DAL
 {
-    public class Online_DAO : AbstractDAO
+    public class Online_DAO : AbstractDAO , IOnlineDAO
     {
 
 
@@ -62,7 +62,7 @@ namespace AdvancedMortgageCalculator.DAL
             MySqlDataReader cursor = command.ExecuteReader();
             {
                 if (cursor.Read())
-                {
+               {
                     string bankName = cursor.GetString("bank_name");
                     string bankAddress = cursor.GetString("bank_address");
                     double lowestRate = cursor.GetDouble("lowest_rate");
@@ -73,16 +73,13 @@ namespace AdvancedMortgageCalculator.DAL
                         Name = bankName,
                         Address = bankAddress,
                         MortgageInterestRates = new List<MortgageInterestRates>
-                {
-                    new MortgageInterestRates
-                    {
-                        Rate = lowestRate,
-                        Effective = effectiveDate,
-                        Expiry = expiryDate
-                    }
+                   {
+                    new MortgageInterestRates {Rate = lowestRate,Effective = effectiveDate,Expiry = expiryDate
+                   }
+
                 }
                     };
-                }
+               }
             }
             cursor.Close();
             this.Connection.Close();

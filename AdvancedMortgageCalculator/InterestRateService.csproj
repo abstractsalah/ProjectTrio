@@ -103,7 +103,8 @@
     <Compile Include="DAL\AbstractDAO.cs" />
     <Compile Include="DAL\BankDAO.cs" />
     <Compile Include="DAL\IBankDAO.cs" />
-    <Compile Include="DAL\Offline_DAO.cs" />
+    <Compile Include="DAL\IBankService.cs" />
+    <Compile Include="DAL\IOnlineDAO.cs" />
     <Compile Include="DAL\Online_DAO.cs" />
     <Compile Include="DL\InMemoryDataStore.cs" />
     <Compile Include="Utils\NoBankOrRateFound.cs" />

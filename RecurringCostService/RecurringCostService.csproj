@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BLL\Model\loanDetails.cs" />
     <Compile Include="BLL\Service\LoanCalculatorService.cs" />
+    <Compile Include="DAL\ICalculatorService.cs" />
     <Compile Include="FEL\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,7 +53,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL\" />
     <Folder Include="DL\" />
   </ItemGroup>
   <ItemGroup>

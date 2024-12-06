@@ -1,4 +1,5 @@
 ﻿using AdvancedMortgageCalculator.DAL;
+using RecurringCostService.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace RecurringCostService.BLL.Service
 {
-    public class LoanCalculatorService
-
+    public class LoanCalculatorService : ICalculatorService
     {
-        public Online_DAO onlineDao;
+        private readonly IOnlineDAO onlineDao;
 
-        // Injecter le DAO dans le constructeur
-        public LoanCalculatorService(Online_DAO onlineDao)
+        public LoanCalculatorService(IOnlineDAO onlineDao)
         {
             this.onlineDao = onlineDao;
         }
@@ -23,19 +22,14 @@ namespace RecurringCostService.BLL.Service
             double P = loanAmount;
             int n = months;
 
-            // calculate monthly interest rate
             var interestRates= this.onlineDao.FetchBankInterestRateByName(bankName);
-         
-            // Utiliser le taux d'intérêt le plus bas
             double annualInterestRate = interestRates.MortgageInterestRates.Min(rate => rate.Rate);
             double r = annualInterestRate / 100 / 12;
-            // calculate monthly insurance rate
             var insuranceRates = this.onlineDao.FetchMortgageInsuranceRateByBank(bankName);
 
-            // Utiliser le taux d'assurance le plus bas
             double annualInsuranceRate = insuranceRates.Min(rate => rate.Rate);
             double a = annualInsuranceRate / 100 / 12;
-            //// Monthly payment formula
+            //// formula of monthly payment 
             double combinedRate = r + a;
             double numerator = P * combinedRate * Math.Pow(1 + combinedRate, n);
             double denominator = Math.Pow(1 + combinedRate, n) - 1;

@@ -8,18 +8,11 @@ namespace AdvancedMortgageCalculator.DAL
 
         private readonly string connectionString;
         protected MySqlConnection Connection;
-        public AbstractDAO
-()
+        public AbstractDAO()
         {
             this.connectionString = $"Server={Preferences.host};Database={Preferences.dbname};"
                                     + $"Uid={Preferences.username};Pwd={Preferences.password};";
             this.Connection = new MySqlConnection(this.connectionString);
         }
-
-        public MySqlConnection getConnection()
-        {
-            return this.Connection;
-        }
-
     }
 }

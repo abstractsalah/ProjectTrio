@@ -1,39 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdvancedMortgageCalculator.BLL.Service;
+using AdvancedMortgageCalculator.DAL;
 using RecurringCostService.BLL.Service;
+using RecurringCostService.DAL;
 
 namespace MortageAmortizationService.BLL.Model
 {
-    public class MortgageAmortizationService
-    {
-        private readonly BankService interestRateService;
-        private readonly LoanCalculatorService loanCalculatorService;
+
 
         // Injecter les dépendances 
-        public MortgageAmortizationService(BankService irs, LoanCalculatorService rcs)
+        public class MortgageAmortizationService
         {
-            this.interestRateService = irs;
-            this.loanCalculatorService = rcs;
-        }
+            private readonly IBankService bankService;
+            private readonly ICalculatorService loanCalculatorService;
 
-        public void CalculateAmortization(double housePrice, double initialDeposit, int months)
+            public MortgageAmortizationService(IBankService bankService, ICalculatorService loanCalculatorService)
+            {
+                this.bankService = bankService;
+                this.loanCalculatorService = loanCalculatorService;
+            }
+            public void CalculateAmortization(double housePrice, double initialDeposit, int months)
         {
             try
             {
                 // Étape 1 : Calcul du montant du prêt
                 double loanAmount = housePrice - initialDeposit;
-                if (loanAmount <= 0)
+                if (loanAmount == 0)
                 {
-                    Console.WriteLine("Erreur : L'apport initial est supérieur ou égal au prix de la maison.");
+                    Console.WriteLine("Erreur : L'apport initial est  égal au prix de la maison.");
                     return;
+
+                }
+                else if (loanAmount < 0) 
+                {
+                    Console.WriteLine("Erreur : Tu n'est pas eligible pour un prêt :P .");
+                    return;
+
                 }
 
+
                 // Étape 2 : Obtenir le meilleur taux hypothécaire via InterestRateService (IRS)
-                var bestRateBank = interestRateService.FetchBankWithLowestInterestRate();
+                var bestRateBank = bankService.FetchBankWithLowestInterestRate();
                 
 
                 // Étape 3 : Calculer le paiement mensuel et les intérêts via RecurringCostService (RCS)

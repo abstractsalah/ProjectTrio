@@ -31,13 +31,6 @@ namespace AdvancedMortgageCalculator.BLL.Model
             MortgageInterestRates = mortgageInterestRates;
         }
 
-        public Bank(string name, string address, List<MortgageInterestRates> mortgageInterestRates)
-        {
-            Name = name;
-            Address = address;
-            MortgageInterestRates = mortgageInterestRates;
-        }
-
         public Bank(int id, string name, string address, List<Product> products, List<MortgageInterestRates> mortgageInterestRates, List<MortgageInsuranceRates> mortgageInsuranceRates)
         {
             Id = id;

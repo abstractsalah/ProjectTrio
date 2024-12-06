@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecurringCostService", "Rec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageAmortizationService", "MortgageAmortizationService\MortgageAmortizationService.csproj", "{CDC7F4C4-2757-46AF-B921-6D893FC6932F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MC_Tests", "AMC_Test\MC_Tests.csproj", "{62B094BE-334C-433A-A0E4-D70FFDFED8CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MC_TUI", "MC_TUI\MC_TUI.csproj", "{88427306-F26C-4ED8-8AF3-B9F89A7A65EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDC7F4C4-2757-46AF-B921-6D893FC6932F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B094BE-334C-433A-A0E4-D70FFDFED8CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B094BE-334C-433A-A0E4-D70FFDFED8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B094BE-334C-433A-A0E4-D70FFDFED8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B094BE-334C-433A-A0E4-D70FFDFED8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88427306-F26C-4ED8-8AF3-B9F89A7A65EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88427306-F26C-4ED8-8AF3-B9F89A7A65EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88427306-F26C-4ED8-8AF3-B9F89A7A65EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88427306-F26C-4ED8-8AF3-B9F89A7A65EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

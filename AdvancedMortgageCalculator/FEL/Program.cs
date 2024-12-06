@@ -34,7 +34,7 @@ namespace AdvancedMortgageCalculator
 
 
 
-            /*Online_DAO dao = new Online_DAO();
+            Online_DAO dao = new Online_DAO();
             Console.WriteLine("Entrez le nom de la banque :");
             string bankName = Console.ReadLine();
             Bank bank = dao.FetchBankInterestRateByName(bankName);
@@ -62,7 +62,7 @@ namespace AdvancedMortgageCalculator
             Console.ReadKey();
         }
     }
-}*/
+}
 
 
             /*Console.WriteLine("Entrez le nom de la banque :");                        // 1st user story using service //
@@ -163,7 +163,7 @@ namespace AdvancedMortgageCalculator
 
 
             // Instancier le DAO
-            Online_DAO dao = new Online_DAO();
+            /*Online_DAO dao = new Online_DAO();
 
             // Demander à l'utilisateur d'entrer le nom de la banque
             Console.WriteLine("Entrez le nom de la banque pour récupérer les taux d'assurance hypothécaire :");
@@ -188,4 +188,4 @@ namespace AdvancedMortgageCalculator
             Console.ReadKey();
         }
     }
-}
+}*/

@@ -17,6 +17,10 @@ namespace AdvancedMortgageCalculator.DAL
             this.repository = InMemoryDataStore.GetInstance();
         }
 
+        public Bank FetchBankWithLowestInterestRate()
+        {
+            throw new NotImplementedException();
+        }
 
         public IList<Bank> GetAllBanks()
         {

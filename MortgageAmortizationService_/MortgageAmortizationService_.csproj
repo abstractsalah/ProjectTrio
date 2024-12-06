@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDC7F4C4-2757-46AF-B921-6D893FC6932F}</ProjectGuid>
+    <ProjectGuid>{E809B887-98D0-4F6F-9DE2-703436730A24}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MortgageAmortizationService</RootNamespace>
-    <AssemblyName>MortgageAmortizationService</AssemblyName>
+    <RootNamespace>MortgageAmortizationService_</RootNamespace>
+    <AssemblyName>MortgageAmortizationService_</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,26 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\Service\MortgageAmortizationService.cs" />
-    <Compile Include="FEL\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AdvancedMortgageCalculator\InterestRateService.csproj">
-      <Project>{4eeaf85b-e467-4a1e-996d-a60b72f3dc2e}</Project>
-      <Name>InterestRateService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RecurringCostService\RecurringCostService.csproj">
-      <Project>{11937126-dffd-4195-b252-92ddc85ac93a}</Project>
-      <Name>RecurringCostService</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BLL\Model\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
